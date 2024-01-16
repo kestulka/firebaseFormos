@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
-</head>
-<body>
-    <div id="id"></div>
-    <div id="name"></div>
-    <div id="email"></div>
-    <div id="gender"></div>
-    <div id="buttons">
-        <button id="insert">Insert</button>
-        <button id="update">Update</button>
-        <button id="remove">Remove</button>
-    </div>
+  </head>
+  <body>
+    <div id="container">
+      <div id="title_container">
+        <h2 id="header">Firebase Database:</h2>
+      </div>
 
-    <script src="script.js" type="module"></script>
-</body>
+      <div id="form_container">
+        <input placeholder="Email" type="email" id="email" />
+        <input placeholder="Username" type="name" id="username" />
+        <input placeholder="Password" type="password" id="password" />
+        <!-- galima prideti random gen -->
+        <input placeholder="Favourite Food" type="text" id="favouriteFood" />
+      </div>
+
+      <div id="button_container">
+        <button id="insert">INSERT</button>
+        <button id="getAll">GET ALL</button>
+        <button id="update">UPDATE</button>
+        <button id="delete">DELETE</button>
+      </div>
+    </div>
+  </body>
 </html>
