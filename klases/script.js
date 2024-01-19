@@ -1,3 +1,5 @@
+// firebase setup
+
 import { firebaseConfig } from "./firebase.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
@@ -15,6 +17,10 @@ const idDiv = document.getElementById("id");
 const nameDiv = document.getElementById("name");
 const emailDiv = document.getElementById("email");
 const genderDiv = document.getElementById("gender");
+
+// -------------------
+
+// creating html elements
 
 const idInput = document.createElement("input");
 idInput.type = "number";
@@ -39,6 +45,10 @@ genderDiv.appendChild(genderInput);
 const insertBtn = document.getElementById("insert");
 const updateBtn = document.getElementById("update");
 const removeBtn = document.getElementById("remove");
+
+// -------------------------------
+
+// functionality
 
 insertBtn.addEventListener("click", (event) => {
   event.preventDefault();
