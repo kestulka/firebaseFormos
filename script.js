@@ -8,6 +8,8 @@ import {
   set,
   child,
   get,
+  push,
+  update,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 const app = initializeApp(firebaseConfig);
@@ -100,4 +102,31 @@ getAllButton.addEventListener("click", (event) => {
 
 updateButton.addEventListener("click", (event) => {
   event.preventDefault();
+
+  const idValue = userIdInput.value;
+  const usernameValue = usernameInput.value;
+  const passwordValue = passwordInput.value;
+  const emailValue = emailInput.value;
+  const favoriteFoodValue = favouriteFoodInput.value;
+
+  // extractinam data is formos
+  const postData = {
+    username: usernameValue,
+    password: passwordValue,
+    email: emailValue,
+    favoriteFood: favoriteFoodValue,
+  };
+
+  // sukisam ta data i firebase database objekta
+  const updates = {};
+  updates["/users/" + idValue] = postData;
+
+  // kvieciam update metoda, jam paduodam ref i musu duomenu baze(db), tada pasaukiam updates ir virsaus
+  return update(ref(db), updates)
+    .then(() => {
+      alert("User has been updated!");
+    })
+    .catch((error) => {
+      alert(error);
+    });
 });
