@@ -77,3 +77,23 @@ getOneButton.addEventListener("click", (event) => {
     });
   clearInputFields();
 });
+
+const usersRef = ref(db, "users"); // reference i "users" firebase collectiona
+
+getAllButton.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  get(usersRef)
+    .then((snapshot) => {
+      // then naudojamas kartu su get sinchroniskai, kai data gaunama, tada(then) ir vykdomas kodas
+      const users = [];
+      snapshot.forEach((childSnapshot) => {
+        // iteruoja per kiekviena eilute sarase
+        users.push(childSnapshot.val()); // is tos eilutes paimama reiksme supushinama i users array
+      });
+      console.log(users);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});

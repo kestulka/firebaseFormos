@@ -1,1 +1,3 @@
-current tasks: insert, get all, get one by ID, update, delete.
+current tasks:
+update,
+delete
