@@ -16,6 +16,7 @@ const db = getDatabase();
 // -------------------
 
 const insertButton = document.getElementById("insertBtn");
+const getOneButton = document.getElementById("getOneBtn");
 const getAllButton = document.getElementById("getAllBtn");
 const updateButton = document.getElementById("updateBtn");
 const deleteButton = document.getElementById("deleteBtn");
@@ -52,6 +53,27 @@ insertButton.addEventListener("click", (event) => {
     })
     .catch((error) => {
       alert(error);
+    });
+  clearInputFields();
+});
+
+const dbRef = ref(getDatabase());
+
+getOneButton.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  const idValue = userIdInput.value;
+
+  get(child(dbRef, `users/${idValue}`))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val()); // jei norima su alert displayinti: alert(JSON.stringify(snapshot.val(), null, 2));
+      } else {
+        alert(`no such data with id: ${idValue} is available`);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
     });
   clearInputFields();
 });
