@@ -97,3 +97,7 @@ getAllButton.addEventListener("click", (event) => {
       console.log(error);
     });
 });
+
+updateButton.addEventListener("click", (event) => {
+  event.preventDefault();
+});
