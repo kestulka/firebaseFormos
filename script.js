@@ -8,8 +8,8 @@ import {
   set,
   child,
   get,
-  push,
   update,
+  remove,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 const app = initializeApp(firebaseConfig);
@@ -125,6 +125,28 @@ updateButton.addEventListener("click", (event) => {
   return update(ref(db), updates)
     .then(() => {
       alert("User has been updated!");
+    })
+    .catch((error) => {
+      alert(error);
+    });
+});
+
+deleteButton.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  const idValue = userIdInput.value;
+
+  if (!idValue) {
+    alert("Please enter a user ID to delete");
+    return;
+  }
+
+  const userRef = ref(db, "users/" + idValue); // referinam i useri musu firebase duombazej
+
+  remove(userRef)
+    .then(() => {
+      alert("user data have been deleted!");
+      clearInputFields();
     })
     .catch((error) => {
       alert(error);
