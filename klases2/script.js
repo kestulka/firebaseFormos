@@ -171,6 +171,8 @@ loginBtn.addEventListener("click", (event) => {
 signOutBtn.addEventListener("click", (event) => {
     event.preventDefault();
     auth.signOut().then(() => {
+        const image = document.getElementById("panelImg");
+        image.remove();
         console.log('user has signed out')
     }).catch((error) => {
         console.log(error)
@@ -193,11 +195,17 @@ onAuthStateChanged(auth, (user) => {
                 if (snapshot.exists()) {
                     const userDataFromDB = snapshot.val();
                     const userRole = userDataFromDB.role;
+                    const imageContainer = document.getElementById("imageContainer")
+                    const greetingImage = document.createElement("img");
+                    greetingImage.alt = "greeting";
+                    greetingImage.id = "panelImg";
+                    imageContainer.appendChild(greetingImage);
                     if (userRole === "admin") {
-                        console.log("god mode");
-
+                      console.log("Tu esi admin'as!Tau viskas galima!");
+                      greetingImage.src = "https://www.patarimupasaulis.lt/images/Santykiai/vyras-savybes.jpg"
                     } else {
                         console.log("nevykelis");
+                        greetingImage.src = "https://lsveikata.lt/upload/articles_images/3113/def/bomzas.jpg"
                     }
                 } else {
                     console.log("no data");
